@@ -1,5 +1,7 @@
 # [Cambridge Dictionary API](https://github.com/chenelias/cambridge-dictionary-api)
+
 A simple API for Cambridge Dictionary, written in Node.js.
+
 ## Example
 /api/dictionary/`english-chinese-traditional`/`dictionary`
 ```json

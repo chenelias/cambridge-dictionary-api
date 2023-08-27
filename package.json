@@ -1,0 +1,21 @@
+{
+  "name": "cambridge-dictionary-api",
+  "version": "1.0.0",
+  "description": "cambridge dictionary api",
+  "main": "index.js",
+  "scripts": {
+    "dev": "node index.js"
+  },
+  "keywords": [
+    "cambridge-dictionary-api"
+  ],
+  "author": "eliaschen",
+  "license": "MIT",
+  "dependencies": {
+    "cheerio": "^1.0.0-rc.12",
+    "express": "^4.18.2",
+    "fs": "^0.0.1-security",
+    "path": "^0.12.7",
+    "request": "^2.88.2"
+  }
+}

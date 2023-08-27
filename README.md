@@ -72,7 +72,7 @@ A simple API for Cambridge Dictionary, written in Node.js.
 
 ## 📖How to use it
 /api/dictionary/`{language}`/`{word}`
-- language: `english`  `english-chinese-simplified`  `english-chinese-traditional`
+- language option: `english` | `english-chinese-simplified` |  `english-chinese-traditional`
 
 ## 🌐Deploy
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/chenelias/cambridge-dictionary-api/)

@@ -63,7 +63,7 @@ app.get('/api/dictionary/:language/:entry', (req, res, next) => {
                         id: index,
                         text: $(element).text(),
                         translation: definitiontrans.eq(index).text(),
-                        example: [example.slice(exampleCount[index - 1], exampleCount[index])],
+                        example: example.slice(exampleCount[index - 1], exampleCount[index]),
                     }
                 })
                 .get()

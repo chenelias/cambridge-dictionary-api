@@ -75,12 +75,12 @@ app.get('/api/dictionary/:language/:entry', (req, res, next) => {
                 pos: pos,
                 pronunciation: [
                     {
-                        text: 'us',
+                        lang: 'us',
                         url: usaudio,
                         pron: uspron,
                     },
                     {
-                        text: 'uk',
+                        lang: 'uk',
                         url: ukaudio,
                         pron: ukpron,
                     },

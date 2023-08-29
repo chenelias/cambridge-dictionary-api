@@ -102,17 +102,17 @@ A simple API for Cambridge Dictionary, written in Node.js.
 }
 ```
 
-## 📖How to use it
+## 📖 How to use it
 
 /api/dictionary/`{language}`/`{word}`
 
 -   language option: `english` | `english-chinese-simplified` | `english-chinese-traditional`
 
-## 🌐Deploy
+## 🌐 Deploy
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/chenelias/cambridge-dictionary-api/)
 
-## 💻Running Locally
+## 💻 Running Locally
 
 After clone this repository, run the following commands in the repository floder:
 

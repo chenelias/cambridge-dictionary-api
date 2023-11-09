@@ -1,100 +1,92 @@
 # [Cambridge Dictionary API](https://github.com/chenelias/cambridge-dictionary-api)
 
-A simple API for Cambridge Dictionary, written in Node.js.
+A simple API for Cambridge Dictionary, built with Node.js.
 
 ## Example
 
-/api/dictionary/`english-chinese-traditional`/`dictionary`
+/api/dictionary/`english-chinese-traditional`/`cook`
 
 ```json
 {
-    "word": "hello",
-    "pos": ["exclamation", "noun"],
+    "word": "cook",
+    "pos": [
+        "verb",
+        "noun"
+    ],
+    "verbs": [
+        {
+            "type": "Plain form",
+            "text": "cook"
+        },
+        {
+            "type": "Third-person singular",
+            "text": "cooks"
+        },
+        {
+            "type": "Past tense",
+            "text": "cooked"
+        },
+        {
+            "type": "Past participle",
+            "text": "cooked"
+        },
+        {
+            "type": "Present participle",
+            "text": "cooking"
+        },
+        {
+            "type": "Singular",
+            "text": "cook"
+        },
+        {
+            "type": "Plural",
+            "text": "cooks"
+        }
+    ],
     "pronunciation": [
         {
             "lang": "us",
-            "url": "https://dictionary.cambridge.org/us/media/english-chinese-traditional/us_pron/h/hel/hello/hello.mp3",
-            "pron": "/heˈloʊ/"
+            "url": "https://dictionary.cambridge.org/us/media/english-chinese-traditional/us_pron/c/coo/cook_/cook.mp3",
+            "pron": "/kʊk/"
         },
         {
             "lang": "uk",
-            "url": "https://dictionary.cambridge.org/us/media/english-chinese-traditional/uk_pron/u/ukh/ukhef/ukheft_029.mp3",
-            "pron": "/heˈləʊ/"
+            "url": "https://dictionary.cambridge.org/us/media/english-chinese-traditional/uk_pron/u/ukc/ukcon/ukconve028.mp3",
+            "pron": "/kʊk/"
         }
     ],
     "definition": [
         {
             "id": 0,
-            "text": "used when meeting or greeting someone",
-            "translation": "喂，你好（用於問候或打招呼）",
+            "text": "When you cook food, you prepare it to be eaten by heating it in a particular way, such as baking or boiling, and when food cooks, it is heated until it is ready to eat.",
+            "translation": "做飯，烹調;燒，煮",
             "example": [
                 {
                     "id": 0,
-                    "text": "Hello, Paul. I haven't seen you for ages.",
-                    "translation": "「你好，保羅。好久不見了。」"
+                    "text": "I don't cook meat very often.",
+                    "translation": "我不常煮肉吃。"
                 },
                 {
                     "id": 1,
-                    "text": "I know her vaguely - we've exchanged hellos a few times.",
-                    "translation": "我對她不太熟悉——我們只有打過幾次招呼。"
+                    "text": "He cooked us a huge dinner./He cooked a huge dinner for us.",
+                    "translation": "他給我們準備了一頓豐盛的飯菜。"
                 },
                 {
                     "id": 2,
-                    "text": "I just thought I'd call by and say hello.",
-                    "translation": "我正好想要去順道拜訪問候一下。"
-                },
-                {
-                    "id": 3,
-                    "text": "And a big hello (= welcome) to all the parents who've come to see the show.",
-                    "translation": "非常歡迎所有來看演出的家長。"
+                    "text": "Let the fish cook for half an hour before you add the wine.",
+                    "translation": "先把魚煮半個小時再加入酒。"
                 }
             ]
         },
         {
             "id": 1,
-            "text": "something that is said at the beginning of a phone conversation",
-            "translation": "（打電話時的招呼語）你好，喂",
+            "text": "someone who prepares and cooks food",
+            "translation": "廚師",
             "example": [
                 {
-                    "id": 4,
-                    "text": "\"Hello, I'd like some information about flights to the US, please.\"",
-                    "translation": "「你好，我想詢問一些你們飛往美國的航班資料。」"
-                }
-            ]
-        },
-        {
-            "id": 2,
-            "text": "something that is said to attract someone's attention",
-            "translation": "（引起別人注意的招呼語）",
-            "example": [
-                {
-                    "id": 5,
-                    "text": "The front door was open so she walked inside and called out, \"Hello! Is there anybody in?\"",
-                    "translation": "前門開著，於是她走進去喊道：「喂！有人在嗎?」"
-                }
-            ]
-        },
-        {
-            "id": 3,
-            "text": "said to someone who has just said or done something stupid, especially something that shows they are not noticing what is happening",
-            "translation": "（表示認為某人言行愚蠢可笑，尤指對正在發生的事不注意）",
-            "example": [
-                {
-                    "id": 6,
-                    "text": "She asked me if I'd just arrived and I was like \"Hello, I've been here for an hour.\"",
-                    "translation": "她問我是否剛剛到，我回答她說「嗨，我已經到這裡一個小時了。」"
-                }
-            ]
-        },
-        {
-            "id": 4,
-            "text": "an expression of surprise",
-            "translation": "（表示驚訝）",
-            "example": [
-                {
-                    "id": 7,
-                    "text": "Hello, this is very strange - I know that man.",
-                    "translation": "嘿，這可真奇怪——我認識那個人。"
+                    "id": 3,
+                    "text": "She's a wonderful cook.",
+                    "translation": "她是位很出色的廚師。"
                 }
             ]
         }

@@ -1,17 +1,51 @@
 const cheerio = require('cheerio')
 const request = require('request')
 const express = require('express')
+const axios = require('axios')
 const app = express()
+
+const fetchVerbs = (wiki) => {
+    return new Promise((resolve, reject) => {
+        axios
+            .get(wiki)
+            .then((response) => {
+                const $$ = cheerio.load(response.data)
+                const verb = $$('tr > td > p ').text()
+
+                const lines = verb
+                    .split('\n')
+                    .map((line) => line.trim())
+                    .filter(Boolean)
+
+                const verbs = []
+                for (let i = 0; i < lines.length; i += 2) {
+                    const type = lines[i]
+                    const text = lines[i + 1]
+                    verbs.push({ type, text })
+                }
+
+                resolve(verbs)
+            })
+            .catch((error) => {
+                reject(error)
+            })
+    })
+}
 
 app.get('/api/dictionary/:language/:entry', (req, res, next) => {
     const entry = req.params.entry
     const language = req.params.language
     const url = `https://dictionary.cambridge.org/us/dictionary/${language}/${entry}`
-
-    request(url, (error, response, html) => {
+    request(url, async (error, response, html) => {
         if (!error && response.statusCode == 200) {
             const $ = cheerio.load(html)
             const siteurl = 'https://dictionary.cambridge.org'
+            const wiki = `https://simple.wiktionary.org/wiki/${entry}`
+            const google = `https://www.google.com/search?q=${entry}+definition`
+
+            // get verbs
+
+            const verbs = await fetchVerbs(wiki)
 
             // basic
 
@@ -21,8 +55,6 @@ app.get('/api/dictionary/:language/:entry', (req, res, next) => {
                     return $(element).text()
                 })
                 .get()
-
-            // pronunciation
 
             const usaudio = siteurl + $('.us.dpron-i audio source').first().attr('src')
             const uspron = $('.us.dpron-i .pron.dpron').first().text()
@@ -73,6 +105,7 @@ app.get('/api/dictionary/:language/:entry', (req, res, next) => {
             res.status(200).json({
                 word: word,
                 pos: pos,
+                verbs: verbs,
                 pronunciation: [
                     {
                         lang: 'us',

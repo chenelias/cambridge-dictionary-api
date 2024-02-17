@@ -27,7 +27,7 @@ const fetchVerbs = (wiki) => {
         resolve(verbs);
       })
       .catch((error) => {
-        reject(error);
+        resolve("verbs not found");
       });
   });
 };
@@ -41,12 +41,12 @@ app.get("/api/dictionary/:language/:entry", (req, res, next) => {
       const $ = cheerio.load(html);
       const siteurl = "https://dictionary.cambridge.org";
       const wiki = `https://simple.wiktionary.org/wiki/${entry}`;
-      const google = `https://www.google.com/search?q=${entry}+definition`;
 
       // get verbs
 
       const verbs = await fetchVerbs(wiki);
 
+      // process.exit(1);
       // basic
 
       const word = $(".hw.dhw").first().text();
@@ -111,26 +111,30 @@ app.get("/api/dictionary/:language/:entry", (req, res, next) => {
 
       // api response
 
-      res.status(200).json({
-        word: word,
-        pos: pos,
-        verbs: verbs,
-        pronunciation: [
-          {
-            lang: "us",
-            url: usaudio,
-            pron: uspron,
-          },
-          {
-            lang: "uk",
-            url: ukaudio,
-            pron: ukpron,
-          },
-        ],
-        definition: definition,
-      });
-    } else {
-      res.status(404).json({ message: "Not found" });
+      if (word === "") {
+        res.status(404).json({
+          error: "word not found",
+        });
+      } else {
+        res.status(200).json({
+          word: word,
+          pos: pos,
+          verbs: verbs,
+          pronunciation: [
+            {
+              lang: "us",
+              url: usaudio,
+              pron: uspron,
+            },
+            {
+              lang: "uk",
+              url: ukaudio,
+              pron: ukpron,
+            },
+          ],
+          definition: definition,
+        });
+      }
     }
   });
 });

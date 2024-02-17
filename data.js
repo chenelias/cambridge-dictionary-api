@@ -3,6 +3,7 @@ const request = require("request");
 const express = require("express");
 const axios = require("axios");
 const app = express();
+const fs = require("fs");
 
 const fetchVerbs = (wiki) => {
   return new Promise((resolve, reject) => {
@@ -31,6 +32,14 @@ const fetchVerbs = (wiki) => {
       });
   });
 };
+
+app.get("/", (req, res) => {
+  fs.readFile("index.html", function (err, data) {
+    res.writeHead(200, { "Content-Type": "text/html" });
+    res.write(data);
+    return res.end();
+  });
+});
 
 app.get("/api/dictionary/:language/:entry", (req, res, next) => {
   const entry = req.params.entry;

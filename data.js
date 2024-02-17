@@ -34,11 +34,7 @@ const fetchVerbs = (wiki) => {
 };
 
 app.get("/", (req, res) => {
-  fs.readFile("index.html", function (err, data) {
-    res.writeHead(200, { "Content-Type": "text/html" });
-    res.write(data);
-    return res.end();
-  });
+  res.sendFile(__dirname + "/index.html");
 });
 
 app.get("/api/dictionary/:language/:entry", (req, res, next) => {

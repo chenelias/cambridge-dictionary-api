@@ -48,15 +48,15 @@
         name="word"
         id="word"
         title="word"
-        placeholder="word"
+        placeholder="enter the word"
       />
-      <button onclick="Go()">GO</button>
+      <button onclick="Go()" type="submit">GO</button>
     </container>
     <script>
       function Go() {
         let lang = document.querySelector("#lang").value;
         let word = document.querySelector("#word").value;
-        location.href = `/api/dictionary/${lang}/${word}`;
+        location.href = `/api/dictionary/${lang}/${word ? word : (word = "work")}`;
       }
     </script>
   </body>

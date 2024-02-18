@@ -56,7 +56,7 @@
       function Go() {
         let lang = document.querySelector("#lang").value;
         let word = document.querySelector("#word").value;
-        location.href = `/api/dictionary/${lang}/${word ? word : (word = "work")}`;
+        location.href = `/api/dictionary/${lang}/${word === "" ? (word = "work") : word}`;
       }
     </script>
   </body>

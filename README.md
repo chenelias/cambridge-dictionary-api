@@ -16,7 +16,7 @@ api/search/`{word}`
 
 - `word` has to be at least 2 characters
 
-- use `/` to test it with UI
+use `/` to test it with UI
 
 ## 🌐 Deploy
 

@@ -18,6 +18,7 @@
     "fs": "^0.0.1-security",
     "kill-port": "^2.0.1",
     "path": "^0.12.7",
+    "puppeteer": "^22.6.5",
     "request": "^2.88.2"
   },
   "packageManager": "yarn@4.0.2"

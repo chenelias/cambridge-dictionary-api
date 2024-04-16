@@ -4,9 +4,18 @@ A simple API for Cambridge Dictionary, built with Node.js.
 
 ## 🕹️ Manual
 
+### Dictionary
+
 api/dictionary/`{language}`/`{word}`
 
 - language option: `english` | `english-chinese-simplified` | `english-chinese-traditional`
+
+### Search
+
+api/search/`{word}`
+
+- `word` has to be at least 2 characters
+
 - use `/` to test it with UI
 
 ## 🌐 Deploy
@@ -28,6 +37,22 @@ Then fetch `http://localhost:3000/api/dictionary/english/hello` to test it
 or use / to test it out with UI.
 
 ## 📖 Example
+
+/api/search/`wond`
+
+```json
+{
+  "suggestions": [
+    "wonder",
+    "wonder drug",
+    "wonderful",
+    "wonderfully",
+    "wonderland",
+    "wonderment",
+    "wonders never cease"
+  ]
+}
+```
 
 /api/dictionary/`english-chinese-traditional`/`cook`
 

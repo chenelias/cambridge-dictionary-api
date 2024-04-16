@@ -2,11 +2,12 @@ const cheerio = require("cheerio");
 const request = require("request");
 const express = require("express");
 const axios = require("axios");
-const app = express();
+const puppeteer = require("puppeteer");
 const fs = require("fs");
+const app = express();
 
 const fetchVerbs = (wiki) => {
-  return new Promise((resolve, reject) => {
+  return new Promise((resolve) => {
     axios
       .get(wiki)
       .then((response) => {
@@ -27,7 +28,7 @@ const fetchVerbs = (wiki) => {
 
         resolve(verbs);
       })
-      .catch((error) => {
+      .catch(() => {
         resolve("verbs not found");
       });
   });
@@ -37,7 +38,7 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
 
-app.get("/api/dictionary/:language/:entry", (req, res, next) => {
+app.get("/api/dictionary/:language/:entry", (req, res) => {
   const entry = req.params.entry;
   const language = req.params.language;
   const url = `https://dictionary.cambridge.org/us/dictionary/${language}/${entry}`;
@@ -142,6 +143,37 @@ app.get("/api/dictionary/:language/:entry", (req, res, next) => {
       }
     }
   });
+});
+
+app.get("/api/search/:search", (req, res) => {
+  const searchtext = req.params.search;
+  const search = async (text) => {
+    const browser = await puppeteer.launch();
+    const page = await browser.newPage();
+    await page.goto("https://dictionary.cambridge.org/");
+    await page.type("input", text);
+    await page.waitForSelector(".haxa");
+
+    const suggestions = await page.evaluate(() => {
+      const suggestionItems = Array.from(
+        document.querySelectorAll(".autocomplete-item"),
+      );
+      return suggestionItems.map((item) => item.textContent.trim());
+    });
+
+    res.status(200).json({
+      suggestions: suggestions,
+    });
+
+    await browser.close();
+  };
+  if (searchtext.length > 1) {
+    search(searchtext);
+  } else {
+    res.status(400).json({
+      error: "search text has to be at least 2 characters",
+    });
+  }
 });
 
 module.exports = app;

@@ -4,10 +4,18 @@ A simple API for Cambridge Dictionary, built with Node.js.
 
 ## 🕹️ Manual
 
+### dictionary
+
 api/dictionary/`{language}`/`{word}`
 
 - language option: `english` | `english-chinese-simplified` | `english-chinese-traditional`
-- use `/` to test it with UI
+
+### 🔎 search
+
+> [!NOTE]
+> Fixing problem with puppeteer running on vercel on search branch
+
+use `/` to test it with UI
 
 ## 🌐 Deploy
 

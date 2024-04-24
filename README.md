@@ -10,7 +10,10 @@ api/dictionary/`{language}`/`{word}`
 
 - language option: `english` | `english-chinese-simplified` | `english-chinese-traditional`
 
-### Search
+### 🚧 Search
+
+> [!WARNING]
+> Have the problem with the puppeteer running on vercel
 
 api/search/`{word}`
 

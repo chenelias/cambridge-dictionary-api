@@ -3,7 +3,7 @@ const request = require("request");
 const express = require("express");
 const axios = require("axios");
 const app = express();
-const fs = require("fs");
+const cors = require("cors");
 
 const fetchVerbs = (wiki) => {
   return new Promise((resolve, reject) => {
@@ -33,6 +33,8 @@ const fetchVerbs = (wiki) => {
   });
 };
 
+app.use(cors({ origin: "*" }));
+
 app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 });
@@ -51,7 +53,6 @@ app.get("/api/dictionary/:language/:entry", (req, res, next) => {
 
       const verbs = await fetchVerbs(wiki);
 
-      // process.exit(1);
       // basic
 
       const word = $(".hw.dhw").first().text();

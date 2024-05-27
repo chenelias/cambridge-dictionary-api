@@ -41,7 +41,16 @@ app.get("/", (req, res) => {
 
 app.get("/api/dictionary/:language/:entry", (req, res, next) => {
   const entry = req.params.entry;
-  const language = req.params.language;
+  const slugLanguage = req.params.language;
+
+  if (slugLanguage === "en") {
+    language = "english";
+  } else if (slugLanguage === "en-tw") {
+    language = "english-chinese-traditional";
+  } else if (slugLanguage === "en-cn`") {
+    language = "english-chinese-simplified";
+  }
+
   const url = `https://dictionary.cambridge.org/us/dictionary/${language}/${entry}`;
   request(url, async (error, response, html) => {
     if (!error && response.statusCode == 200) {
@@ -144,5 +153,4 @@ app.get("/api/dictionary/:language/:entry", (req, res, next) => {
     }
   });
 });
-
 module.exports = app;

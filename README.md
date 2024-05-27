@@ -4,18 +4,24 @@ A simple API for Cambridge Dictionary, built with Node.js.
 
 ## 🕹️ Manual
 
-### dictionary
+### 📚️ dictionary
 
 api/dictionary/`{language}`/`{word}`
 
-- language option: `english` | `english-chinese-simplified` | `english-chinese-traditional`
+#### **language option:**
+
+| option      |         description         |
+| ----------- | :-------------------------: |
+| **`en`**    |           english           |
+| **`en-cn`** | english-chinese-simplified  |
+| **`en-tw`** | english-chinese-traditional |
 
 ### 🔎 search
 
 > [!NOTE]
-> Fixing problem with puppeteer running on vercel on search branch
+> have the problem with puppeteer running on vercel on search branch(but works fine on local env)
 
-use `/` to test it with UI
+**use `/` to test it with UI**
 
 ## 🌐 Deploy
 
@@ -120,6 +126,22 @@ or use / to test it out with UI.
         }
       ]
     }
+  ]
+}
+```
+
+/api/search/`wond` (search branch)
+
+```json
+{
+  "suggestions": [
+    "wonder",
+    "wonder drug",
+    "wonderful",
+    "wonderfully",
+    "wonderland",
+    "wonderment",
+    "wonders never cease"
   ]
 }
 ```

@@ -1,4 +1,4 @@
-# [Cambridge Dictionary API](https://github.com/chenelias/cambridge-dictionary-api)
+# Cambridge Dictionary API
 
 A simple API for Cambridge Dictionary, built with Node.js.
 
@@ -43,7 +43,7 @@ or use / to test it out with UI.
 
 ## 📖 Example
 
-/api/dictionary/`english-chinese-traditional`/`cook`
+/api/dictionary/`en-tw`/`cook`
 
 ```json
 {

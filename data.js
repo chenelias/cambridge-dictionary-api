@@ -44,10 +44,10 @@ app.get("/api/dictionary/:language/:entry", (req, res, next) => {
   const slugLanguage = req.params.language;
 
   if (slugLanguage === "en") {
-    language = "english";
+    language = "english-chinese-traditional";
   } else if (slugLanguage === "en-tw") {
     language = "english-chinese-traditional";
-  } else if (slugLanguage === "en-cn`") {
+  } else if (slugLanguage === "en-cn") {
     language = "english-chinese-simplified";
   }
 
@@ -102,7 +102,8 @@ app.get("/api/dictionary/:language/:entry", (req, res, next) => {
           return {
             id: index,
             text: $(element).text(),
-            translation: exampletrans.eq(index).text(),
+            translation:
+              slugLanguage == "en" ? "" : exampletrans.eq(index).text(),
           };
         })
         .get();
@@ -115,7 +116,8 @@ app.get("/api/dictionary/:language/:entry", (req, res, next) => {
           return {
             id: index,
             text: $(element).text(),
-            translation: definitiontrans.eq(index).text(),
+            translation:
+              slugLanguage == "en" ? "" : definitiontrans.eq(index).text(),
             example: example.slice(
               exampleCount[index - 1],
               exampleCount[index],

@@ -22,13 +22,17 @@ const fetchVerbs = (wiki) => {
         for (let i = 0; i < lines.length; i += 2) {
           const type = lines[i];
           const text = lines[i + 1];
-          verbs.push({ type, text });
+          if (type && text) {
+            verbs.push({ type, text });
+          } else {
+            verbs.push();
+          }
         }
 
         resolve(verbs);
       })
       .catch((error) => {
-        resolve("verbs not found");
+        resolve();
       });
   });
 };
@@ -44,7 +48,7 @@ app.get("/api/dictionary/:language/:entry", (req, res, next) => {
   const slugLanguage = req.params.language;
 
   if (slugLanguage === "en") {
-    language = "english-chinese-traditional";
+    language = "english";
   } else if (slugLanguage === "en-tw") {
     language = "english-chinese-traditional";
   } else if (slugLanguage === "en-cn") {
@@ -65,11 +69,14 @@ app.get("/api/dictionary/:language/:entry", (req, res, next) => {
       // basic
 
       const word = $(".hw.dhw").first().text();
-      const pos = $(".pos.dpos") // part of speech
+      const getPos = $(".pos.dpos") // part of speech
         .map((index, element) => {
           return $(element).text();
         })
         .get();
+      const pos = getPos.filter(
+        (item, index) => getPos.indexOf(item) === index,
+      );
 
       const usaudio =
         siteurl + $(".us.dpron-i audio source").first().attr("src");
@@ -102,8 +109,7 @@ app.get("/api/dictionary/:language/:entry", (req, res, next) => {
           return {
             id: index,
             text: $(element).text(),
-            translation:
-              slugLanguage == "en" ? "" : exampletrans.eq(index).text(),
+            translation: exampletrans.eq(index).text(),
           };
         })
         .get();
@@ -116,8 +122,7 @@ app.get("/api/dictionary/:language/:entry", (req, res, next) => {
           return {
             id: index,
             text: $(element).text(),
-            translation:
-              slugLanguage == "en" ? "" : definitiontrans.eq(index).text(),
+            translation: definitiontrans.eq(index).text(),
             example: example.slice(
               exampleCount[index - 1],
               exampleCount[index],

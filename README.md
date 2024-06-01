@@ -44,6 +44,7 @@ or use / to test it out with UI.
 ## 📖 Example
 
 /api/dictionary/`en-tw`/`cook`
+**source is only available in `en`**
 
 ```json
 {

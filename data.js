@@ -116,18 +116,46 @@ app.get("/api/dictionary/:language/:entry", (req, res, next) => {
 
       const definitiontrans = $(
         ".def-body.ddef_b > .trans.dtrans.dtrans-se.break-cj",
-      ); // translation of the definition
+      );
+
+      const source = (element) => {
+        const defElement = $(element);
+        const parentElement = defElement.closest(".pr.dictionary");
+        const dataId = parentElement.attr("data-id");
+        return dataId;
+      };
+
+      const defPos = (element) => {
+        const defElement = $(element);
+        const partOfSpeech = defElement
+          .closest(".pr.entry-body__el")
+          .find(".pos.dpos")
+          .first()
+          .text(); // Get the part of speech
+        return partOfSpeech;
+      };
+
+      // translation of the definition
       const definition = $(".def.ddef_d.db")
         .map((index, element) => {
-          return {
-            id: index,
-            text: $(element).text(),
-            translation: definitiontrans.eq(index).text(),
-            example: example.slice(
-              exampleCount[index - 1],
-              exampleCount[index],
-            ),
-          };
+          const parentPhraseBlock = $(element).closest(
+            ".pr.phrase-block.dphrase-block",
+          );
+          if (parentPhraseBlock.length > 0) {
+            return 0;
+          } else {
+            return {
+              id: index,
+              pos: defPos(element), // TODO: Implement defPos function
+              source: source(element), // TODO: Implement source function
+              text: $(element).text(),
+              translation: definitiontrans.eq(index).text(),
+              example: example.slice(
+                exampleCount[index - 1],
+                exampleCount[index],
+              ),
+            };
+          }
         })
         .get();
 

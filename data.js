@@ -142,7 +142,7 @@ app.get("/api/dictionary/:language/:entry", (req, res, next) => {
             ".pr.phrase-block.dphrase-block",
           );
           if (parentPhraseBlock.length > 0) {
-            return 0;
+            return;
           } else {
             return {
               id: index,

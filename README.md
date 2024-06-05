@@ -95,6 +95,7 @@ or use / to test it out with UI.
   "definition": [
     {
       "id": 0,
+      "pos": "verb",
       "text": "When you cook food, you prepare it to be eaten by heating it in a particular way, such as baking or boiling, and when food cooks, it is heated until it is ready to eat.",
       "translation": "做飯，烹調;燒，煮",
       "example": [
@@ -117,6 +118,7 @@ or use / to test it out with UI.
     },
     {
       "id": 1,
+      "pos": "noun",
       "text": "someone who prepares and cooks food",
       "translation": "廚師",
       "example": [

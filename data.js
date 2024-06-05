@@ -46,16 +46,20 @@ app.get("/", (req, res) => {
 app.get("/api/dictionary/:language/:entry", (req, res, next) => {
   const entry = req.params.entry;
   const slugLanguage = req.params.language;
+  let nation = "us";
 
   if (slugLanguage === "en") {
     language = "english";
+  } else if (slugLanguage === "uk") {
+    language = "english";
+    nation = "uk";
   } else if (slugLanguage === "en-tw") {
     language = "english-chinese-traditional";
   } else if (slugLanguage === "en-cn") {
     language = "english-chinese-simplified";
   }
 
-  const url = `https://dictionary.cambridge.org/us/dictionary/${language}/${entry}`;
+  const url = `https://dictionary.cambridge.org/${nation}/dictionary/${language}/${entry}`;
   request(url, async (error, response, html) => {
     if (!error && response.statusCode == 200) {
       const $ = cheerio.load(html);

@@ -12,7 +12,8 @@ api/dictionary/`{language}`/`{word}`
 
 | option      |         description         |
 | ----------- | :-------------------------: |
-| **`en`**    |           english           |
+| **`en`**    |        english (us)         |
+| **`uk`**    |        english (uk)         |
 | **`en-cn`** | english-chinese-simplified  |
 | **`en-tw`** | english-chinese-traditional |
 

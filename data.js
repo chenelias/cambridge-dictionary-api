@@ -20,15 +20,17 @@ const fetchVerbs = (wiki) => {
 
         const verbs = [];
         for (let i = 0; i < lines.length; i += 2) {
+          if (verbs.includes({ type: lines[i], text: lines[i + 1] })) {
+            break;
+          }
           const type = lines[i];
           const text = lines[i + 1];
           if (type && text) {
-            verbs.push({ type, text });
+            verbs.push({ id: verbs.length, type, text });
           } else {
             verbs.push();
           }
         }
-
         resolve(verbs);
       })
       .catch((error) => {

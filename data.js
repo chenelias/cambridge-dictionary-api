@@ -84,15 +84,26 @@ app.get("/api/dictionary/:language/:entry", (req, res, next) => {
         (item, index) => getPos.indexOf(item) === index,
       );
 
-      const usaudio =
-        siteurl + $(".us.dpron-i audio source").first().attr("src");
-      const uspron = $(".us.dpron-i .pron.dpron").first().text();
-      const ukaudio =
-        siteurl + $(".uk.dpron-i audio source").first().attr("src");
-      const ukpron = $(".uk.dpron-i .pron.dpron").first().text();
+      // Phonetics audios
+      const audio = [];
+      for (const s of $(".pos-header.dpos-h")) {
+        const nodes = s.childNodes.filter(c => c.name === 'span' && c.attribs && c.attribs.class && c.attribs.class.includes('dpron-i'));
+        if (nodes.length === 0) continue;
+        for (const node of nodes) {
+          if (node.childNodes.length < 3) continue;
+          const lang = $(node.childNodes[0]).text();
+          const aud = node.childNodes[1].childNodes.find(c => c.name === 'audio');
+          if (!aud) continue;
+          const src = aud.childNodes.find(c => c.name === 'source');
+          if (!src) continue;
+          const url = siteurl + $(src).attr('src');
+          const pron = $(node.childNodes[2]).text();
+          if (audio.findIndex(a => a.url === url) >= 0) continue;
+          audio.push({lang: lang, url: url, pron: pron});
+        }
+      }
 
       // definition & example
-
       const exampleCount = $(".def-body.ddef_b")
         .map((index, element) => {
           const exampleElements = $(element).find(".examp.dexamp");
@@ -176,18 +187,7 @@ app.get("/api/dictionary/:language/:entry", (req, res, next) => {
           word: word,
           pos: pos,
           verbs: verbs,
-          pronunciation: [
-            {
-              lang: "us",
-              url: usaudio,
-              pron: uspron,
-            },
-            {
-              lang: "uk",
-              url: ukaudio,
-              pron: ukpron,
-            },
-          ],
+          pronunciation: audio,
           definition: definition,
         });
       }

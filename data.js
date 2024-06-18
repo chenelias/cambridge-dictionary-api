@@ -101,7 +101,6 @@ app.get("/api/dictionary/:language/:entry", (req, res, next) => {
           if (!src) continue;
           const url = siteurl + $(src).attr('src');
           const pron = $(node.childNodes[2]).text();
-          if (audio.findIndex(a => a.url === url) >= 0) continue;
           audio.push({pos: p, lang: lang, url: url, pron: pron});
         }
       }

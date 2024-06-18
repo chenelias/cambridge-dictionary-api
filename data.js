@@ -87,6 +87,9 @@ app.get("/api/dictionary/:language/:entry", (req, res, next) => {
       // Phonetics audios
       const audio = [];
       for (const s of $(".pos-header.dpos-h")) {
+        const posNode = s.childNodes.find(c => c.attribs && c.attribs.class && c.attribs.class.includes('dpos-g'));
+        if (!posNode || posNode.childNodes.length === 0) continue;
+        const p = $(posNode.childNodes[0]).text();
         const nodes = s.childNodes.filter(c => c.name === 'span' && c.attribs && c.attribs.class && c.attribs.class.includes('dpron-i'));
         if (nodes.length === 0) continue;
         for (const node of nodes) {
@@ -99,7 +102,7 @@ app.get("/api/dictionary/:language/:entry", (req, res, next) => {
           const url = siteurl + $(src).attr('src');
           const pron = $(node.childNodes[2]).text();
           if (audio.findIndex(a => a.url === url) >= 0) continue;
-          audio.push({lang: lang, url: url, pron: pron});
+          audio.push({pos: p, lang: lang, url: url, pron: pron});
         }
       }
 

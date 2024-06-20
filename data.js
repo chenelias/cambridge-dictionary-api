@@ -3,7 +3,6 @@ const request = require("request");
 const express = require("express");
 const axios = require("axios");
 const puppeteer = require("puppeteer");
-const fs = require("fs");
 const app = express();
 
 const fetchVerbs = (wiki) => {
@@ -148,7 +147,10 @@ app.get("/api/dictionary/:language/:entry", (req, res) => {
 app.get("/api/search/:search", (req, res) => {
   const searchtext = req.params.search;
   const search = async (text) => {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      headless: true,
+      args: ["--no-sandbox"],
+    });
     const page = await browser.newPage();
     await page.goto("https://dictionary.cambridge.org/");
     await page.type("input", text);

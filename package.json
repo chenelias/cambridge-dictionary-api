@@ -4,7 +4,8 @@
   "description": "cambridge dictionary api",
   "main": "index.js",
   "scripts": {
-    "dev": "node index.js"
+    "dev": "node index.js",
+    "start": "node ./bin/www"
   },
   "keywords": [
     "cambridge-dictionary-api"

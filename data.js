@@ -147,7 +147,11 @@ app.get("/api/dictionary/:language/:entry", (req, res) => {
 app.get("/api/search/:search", (req, res) => {
   const searchtext = req.params.search;
   const search = async (text) => {
-    const browser = await puppeteer.launch();
+    const browser = await puppeteer.launch({
+      headless: true,
+      executablePath: "/usr/bin/chromium-browser",
+      args: ["--no-sandbox", "--disable-gpu"],
+    });
     const page = await browser.newPage();
     await page.goto("https://dictionary.cambridge.org/");
     await page.type("input", text);

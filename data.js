@@ -149,7 +149,6 @@ app.get("/api/search/:search", (req, res) => {
   const search = async (text) => {
     const browser = await puppeteer.launch({
       headless: true,
-      executablePath: "/usr/bin/chromium-browser",
       args: ["--no-sandbox", "--disable-gpu"],
     });
     const page = await browser.newPage();

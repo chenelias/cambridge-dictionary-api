@@ -87,21 +87,32 @@ app.get("/api/dictionary/:language/:entry", (req, res, next) => {
       // Phonetics audios
       const audio = [];
       for (const s of $(".pos-header.dpos-h")) {
-        const posNode = s.childNodes.find(c => c.attribs && c.attribs.class && c.attribs.class.includes('dpos-g'));
+        const posNode = s.childNodes.find(
+          (c) =>
+            c.attribs && c.attribs.class && c.attribs.class.includes("dpos-g"),
+        );
         if (!posNode || posNode.childNodes.length === 0) continue;
         const p = $(posNode.childNodes[0]).text();
-        const nodes = s.childNodes.filter(c => c.name === 'span' && c.attribs && c.attribs.class && c.attribs.class.includes('dpron-i'));
+        const nodes = s.childNodes.filter(
+          (c) =>
+            c.name === "span" &&
+            c.attribs &&
+            c.attribs.class &&
+            c.attribs.class.includes("dpron-i"),
+        );
         if (nodes.length === 0) continue;
         for (const node of nodes) {
           if (node.childNodes.length < 3) continue;
           const lang = $(node.childNodes[0]).text();
-          const aud = node.childNodes[1].childNodes.find(c => c.name === 'audio');
+          const aud = node.childNodes[1].childNodes.find(
+            (c) => c.name === "audio",
+          );
           if (!aud) continue;
-          const src = aud.childNodes.find(c => c.name === 'source');
+          const src = aud.childNodes.find((c) => c.name === "source");
           if (!src) continue;
-          const url = siteurl + $(src).attr('src');
+          const url = siteurl + $(src).attr("src");
           const pron = $(node.childNodes[2]).text();
-          audio.push({pos: p, lang: lang, url: url, pron: pron});
+          audio.push({ pos: p, lang: lang, url: url, pron: pron });
         }
       }
 
@@ -133,10 +144,6 @@ app.get("/api/dictionary/:language/:entry", (req, res, next) => {
         })
         .get();
 
-      const definitiontrans = $(
-        ".def-body.ddef_b > .trans.dtrans.dtrans-se.break-cj",
-      );
-
       const source = (element) => {
         const defElement = $(element);
         const parentElement = defElement.closest(".pr.dictionary");
@@ -154,27 +161,31 @@ app.get("/api/dictionary/:language/:entry", (req, res, next) => {
         return partOfSpeech;
       };
 
-      // translation of the definition
-      const definition = $(".def.ddef_d.db")
-        .map((index, element) => {
-          const parentPhraseBlock = $(element).closest(
-            ".pr.phrase-block.dphrase-block",
-          );
-          if (parentPhraseBlock.length > 0) {
-            return;
-          } else {
+      const getExample = (element) => {
+        const ex = $(element)
+          .find(".def-body.ddef_b > .examp.dexamp")
+          .map((index, element) => {
             return {
               id: index,
-              pos: defPos(element), // TODO: Implement defPos function
-              source: source(element), // TODO: Implement source function
-              text: $(element).text(),
-              translation: definitiontrans.eq(index).text(),
-              example: example.slice(
-                exampleCount[index - 1],
-                exampleCount[index],
-              ),
+              text: $(element).find(".eg.deg").text(),
+              translation: $(element).find(".trans.dtrans").text(),
             };
-          }
+          });
+        return ex.get();
+      };
+
+      const definition = $(".def-block.ddef_block")
+        .map((index, element) => {
+          return {
+            id: index,
+            pos: defPos(element),
+            source: source(element),
+            text: $(element).find(".def.ddef_d.db").text(),
+            translation: $(element)
+              .find(".def-body.ddef_b > span.trans.dtrans")
+              .text(),
+            example: getExample(element),
+          };
         })
         .get();
 

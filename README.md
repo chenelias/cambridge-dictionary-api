@@ -2,6 +2,8 @@
 
 A simple API for Cambridge Dictionary, built with Node.js.
 
+<a href="https://www.buymeacoffee.com/eliaschen"><img src="https://img.buymeacoffee.com/button-api/?text=By me a coffee&emoji=&slug=eliaschen&button_colour=8c2eff&font_colour=ffffff&font_family=Arial&outline_colour=ffffff&coffee_colour=FFDD00" /></a>
+
 ## 🕹️ Manual
 
 ### 📚️ dictionary
@@ -17,11 +19,6 @@ api/dictionary/`{language}`/`{word}`
 | **`en-cn`** | english-chinese-simplified  |
 | **`en-tw`** | english-chinese-traditional |
 
-### 🔎 search
-
-> [!NOTE]
-> have the problem with puppeteer running on vercel on search branch(but works fine on local env)
-
 **use `/` to test it with UI**
 
 ## 🌐 Deploy
@@ -34,9 +31,9 @@ After clone this repository, run the following commands in the repository floder
 
 ```bash
 # install dependencies
-npm install
+pnpm install
 # run
-npm run dev
+pnpm run dev
 ```
 
 Then fetch `http://localhost:3000/api/dictionary/english/hello` to test it
@@ -52,43 +49,64 @@ or use / to test it out with UI.
   "pos": ["verb", "noun"],
   "verbs": [
     {
+      "id": 0,
       "type": "Plain form",
       "text": "cook"
     },
     {
+      "id": 1,
       "type": "Third-person singular",
       "text": "cooks"
     },
     {
+      "id": 2,
       "type": "Past tense",
       "text": "cooked"
     },
     {
+      "id": 3,
       "type": "Past participle",
       "text": "cooked"
     },
     {
+      "id": 4,
       "type": "Present participle",
       "text": "cooking"
     },
     {
+      "id": 5,
       "type": "Singular",
       "text": "cook"
     },
     {
+      "id": 6,
       "type": "Plural",
       "text": "cooks"
     }
   ],
   "pronunciation": [
     {
+      "pos": "verb",
+      "lang": "uk",
+      "url": "https://dictionary.cambridge.org/us/media/english-chinese-traditional/uk_pron/u/ukc/ukcon/ukconve028.mp3",
+      "pron": "/kʊk/"
+    },
+    {
+      "pos": "verb",
       "lang": "us",
       "url": "https://dictionary.cambridge.org/us/media/english-chinese-traditional/us_pron/c/coo/cook_/cook.mp3",
       "pron": "/kʊk/"
     },
     {
+      "pos": "noun",
       "lang": "uk",
       "url": "https://dictionary.cambridge.org/us/media/english-chinese-traditional/uk_pron/u/ukc/ukcon/ukconve028.mp3",
+      "pron": "/kʊk/"
+    },
+    {
+      "pos": "noun",
+      "lang": "us",
+      "url": "https://dictionary.cambridge.org/us/media/english-chinese-traditional/us_pron/c/coo/cook_/cook.mp3",
       "pron": "/kʊk/"
     }
   ],
@@ -123,7 +141,7 @@ or use / to test it out with UI.
       "translation": "廚師",
       "example": [
         {
-          "id": 3,
+          "id": 0,
           "text": "She's a wonderful cook.",
           "translation": "她是位很出色的廚師。"
         }
@@ -133,20 +151,16 @@ or use / to test it out with UI.
 }
 ```
 
-/api/search/`wond` (search branch)
+## Support me 🎉
 
-```json
-{
-  "suggestions": [
-    "wonder",
-    "wonder drug",
-    "wonderful",
-    "wonderfully",
-    "wonderland",
-    "wonderment",
-    "wonders never cease"
-  ]
-}
-```
+Hi there, I'm Elias a middle school student from Taiwan. This API was initially created as an API for another project that I'm still working on. I never expected there would be other people interested in this API, so thanks a lot ❤️. If you like this project, please consider supporting me by sponsoring me. Thank you for your support!
 
-Develop by Elias ❤️
+<a href="https://www.buymeacoffee.com/eliaschen"><img src="https://img.buymeacoffee.com/button-api/?text=By me a coffee&emoji=&slug=eliaschen&button_colour=8c2eff&font_colour=ffffff&font_family=Arial&outline_colour=ffffff&coffee_colour=FFDD00" /></a>
+
+## API Source
+
+- POS from [wiktionary](https://www.wiktionary.org/)
+- Other data from [Cambridge Dictionary](https://dictionary.cambridge.org/)
+
+Develop by Elias ❤️ \
+Contributions are welcome! 🎉

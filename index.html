@@ -1,54 +1,73 @@
 <html>
   <head>
     <title>cambridge dictionary api</title>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
     <style>
-      @import url("https://fonts.googleapis.com/css2?family=Kanit:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+      @import url("https://fonts.googleapis.com/css2?family=Source+Code+Pro:ital,wght@0,200..900;1,200..900&display=swap");
       * {
-        font-family: "Kanit", sans-serif;
-        margin: 0;
-        padding: 0;
-      }
-      body {
-        padding: 10px;
-      }
-      h1 {
-        font-size: 40px;
-        font-weight: bold;
-      }
-      .pick {
-        margin: 10px 10px;
-        font-size: 20px;
-        font-weight: normal;
-        display: flex;
-      }
-      select,
-      input,
-      button {
-        margin: 0px 5px;
-        padding: 0px 5px;
+        font-family: "Source Code Pro", monospace;
       }
     </style>
+    <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body>
-    <h1>cambridge dictionary api</h1>
-    <container class="pick">
-      <p>/api/dictionary/</p>
-      <select name="lang" id="lang" title="language">
+  <body class="p-5 text-center bg-purple-100">
+    <h1 class="text-3xl font-bold mt-5">cambridge dictionary api</h1>
+    <div class="pick mt-8 flex mx-auto items-center justify-center mb-5">
+      <p class="text-lg">/api/dictionary/</p>
+      <select
+        name="lang"
+        id="lang"
+        class="bg-purple-300 rounded-lg px-3 py-1 mx-2 text-lg"
+        title="language"
+      >
         <option value="en">en</option>
         <option value="uk">uk</option>
         <option value="en-tw">en-tw</option>
         <option value="en-cn">en-cn</option>
       </select>
-      <p>/</p>
+      <p class="text-lg">/</p>
       <input
+        class="bg-purple-300 rounded-lg px-3 py-1 !text-black placeholder:text-black mx-2 text-lg"
         type="text"
         name="word"
         id="word"
         title="word"
         placeholder="enter the word"
       />
-      <button onclick="Go()" type="submit">GO</button>
-    </container>
+    </div>
+    <button
+      onclick="Go()"
+      class="px-10 font-bold text-xl py-2 hover:drop-shadow-xl transition-[0.2s] rounded-lg bg-purple-400 drop-shadow-md"
+      type="submit"
+    >
+      GO
+    </button>
+    <div class="flex mt-10 justify-center items-center">
+      <a
+        href="https://github.com/chenelias/cambridge-dictionary-api"
+        class="flex items-center bg-white px-3 py-1 mr-4 rounded-xl transition-[0.2s] hover:drop-shadow-xl drop-shadow-md"
+        target="_blank"
+      >
+        <i class="fa fa-github github-icon text-3xl"></i>&nbsp;
+        <div class="block text-left ml-1">
+          <p>GitHub Repository</p>
+          <p>chenelias/cambridge-dictionary-api</p>
+        </div>
+      </a>
+    </div>
+    <div class="mt-4 text-center">
+      <p class="text-xl mb-2 font-bold">Support me</p>
+      <a
+        class="rounded-xl transition-[0.2s] hover:drop-shadow-xl drop-shadow-md"
+        href="https://www.buymeacoffee.com/eliaschen"
+        ><img
+          class="mx-auto"
+          src="https://img.buymeacoffee.com/button-api/?text=By me a coffee&emoji=&slug=eliaschen&button_colour=8c2eff&font_colour=ffffff&font_family=Arial&outline_colour=ffffff&coffee_colour=FFDD00"
+      /></a>
+    </div>
     <script>
       function Go() {
         let lang = document.querySelector("#lang").value;

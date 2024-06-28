@@ -153,7 +153,8 @@ or use / to test it out with UI.
 
 ## Support me 🎉
 
-Hi there, I'm Elias a middle school student from Taiwan. This API was initially created as an API for another project that I'm still working on. I never expected there would be other people interested in this API, so thanks a lot ❤️. If you like this project, please consider supporting me by sponsoring me. Thank you for your support!
+Hi there, I'm Elias a middle school student from Taiwan. This API was initially created as an API for another project that I'm still working on. I never expected there would be other people interested in this API, so thanks a lot ❤️.\
+If you like this project, please consider supporting me by sponsoring me. Thank you for your support!
 
 <a href="https://www.buymeacoffee.com/eliaschen"><img src="https://img.buymeacoffee.com/button-api/?text=By me a coffee&emoji=&slug=eliaschen&button_colour=8c2eff&font_colour=ffffff&font_family=Arial&outline_colour=ffffff&coffee_colour=FFDD00" /></a>
 

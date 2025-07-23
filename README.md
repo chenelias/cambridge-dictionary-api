@@ -149,12 +149,11 @@ or use / to test it out with UI.
 }
 ```
 
+## Special thanks 🎉
+[bendangelo](https://github.com/bendangelo) built a ruby version of this API\
+https://codeberg.org/bendangelo/cambridge_dict
+
 ## Support me 🎉
-
-Hi there, I'm Elias, a middle school student from Taiwan. This API was initially created for another project that I'm still working on. I have never expected that so many people are interested in this project, please consider sponsoring me.\
-Your donations would cover the operating costs of the database and the server for my future projects.
-thanks a lot ❤️.
-
 <a href="https://www.buymeacoffee.com/eliaschen" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/v2/default-yellow.png" alt="Buy Me A Coffee" style="height: 60px !important;width: 217px !important;" ></a>
 
 ## API Source

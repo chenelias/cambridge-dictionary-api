@@ -2,8 +2,6 @@
 
 A simple API for Cambridge Dictionary, built with Node.js.
 
-<a href="https://www.buymeacoffee.com/eliaschen"><img src="https://img.buymeacoffee.com/button-api/?text=By me a coffee&emoji=&slug=eliaschen&button_colour=8c2eff&font_colour=ffffff&font_family=Arial&outline_colour=ffffff&coffee_colour=FFDD00" /></a>
-
 ## 🕹️ Manual
 
 ### 📚️ dictionary
@@ -153,11 +151,11 @@ or use / to test it out with UI.
 
 ## Support me 🎉
 
-Hi there, I'm Elias, a middle school student from Taiwan. This API was initially created for another project that I'm still working on. I have never expected that so many people are  interested in this project, please consider sponsoring me.\
+Hi there, I'm Elias, a middle school student from Taiwan. This API was initially created for another project that I'm still working on. I have never expected that so many people are interested in this project, please consider sponsoring me.\
 Your donations would cover the operating costs of the database and the server for my future projects.
 thanks a lot ❤️.
 
-<a href="https://www.buymeacoffee.com/eliaschen"><img src="https://img.buymeacoffee.com/button-api/?text=By me a coffee&emoji=&slug=eliaschen&button_colour=8c2eff&font_colour=ffffff&font_family=Arial&outline_colour=ffffff&coffee_colour=FFDD00" /></a>
+<script type="text/javascript" src="https://cdnjs.buymeacoffee.com/1.0.0/button.prod.min.js" data-name="bmc-button" data-slug="eliaschen" data-color="#FFDD00" data-emoji=""  data-font="Cookie" data-text="Buy me a coffee" data-outline-color="#000000" data-font-color="#000000" data-coffee-color="#ffffff" ></script>
 
 ## API Source
 

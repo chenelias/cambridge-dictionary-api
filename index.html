@@ -22,58 +22,75 @@
     </style>
     <script src="https://cdn.tailwindcss.com"></script>
   </head>
-  <body class="p-5 text-center bg-purple-100">
-    <h1 class="text-3xl font-bold mt-5">cambridge dictionary api</h1>
-    <p>API for Cambridge Dictionary, written in Node.js.</p>
-    <div class="pick mt-8 flex mx-auto items-center justify-center mb-5">
-      <p class="text-lg">/api/dictionary/</p>
-      <select
-        name="lang"
-        id="lang"
-        class="bg-purple-300 rounded-lg px-3 py-1 mx-2 text-lg"
-        title="language"
-      >
-        <option value="en">en</option>
-        <option value="uk">uk</option>
-        <option value="en-tw">en-tw</option>
-        <option value="en-cn">en-cn</option>
-      </select>
-      <p class="text-lg">/</p>
-      <input
-        class="bg-purple-300 rounded-lg px-3 py-1 !text-black placeholder:text-black mx-2 text-lg"
-        type="text"
-        name="word"
-        id="word"
-        title="word"
-        placeholder="enter the word"
-      />
-    </div>
-    <button
-      onclick="Go()"
-      class="px-10 font-bold text-xl py-2 hover:drop-shadow-xl transition-[0.2s] rounded-lg bg-purple-400 drop-shadow-md"
-      type="submit"
+  <body class="p-5 text-center bg-purple-50">
+    <div
+      class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2"
     >
-      GO
-    </button>
-    <div class="flex mt-10 justify-center items-center">
-      <a
-        href="https://github.com/chenelias/cambridge-dictionary-api"
-        class="flex items-center bg-white px-3 py-1 mr-4 rounded-xl transition-[0.2s] hover:drop-shadow-xl drop-shadow-md"
-        target="_blank"
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        height="auto"
+        viewBox="0 -960 960 960"
+        width="100px"
+        class="relative left-1/2 -translate-x-1/2"
       >
-        <i class="fa fa-github github-icon text-3xl"></i>&nbsp;
-        <div class="block text-left ml-1">
-          <p>GitHub Repository</p>
-          <p>chenelias/cambridge-dictionary-api</p>
-        </div>
-      </a>
+        <path
+          d="M300-80q-59 0-99.5-40.5T160-220v-520q0-58 40.5-99t99.5-41h500v600q-26 0-43 17.5T740-220q0 26 17 43t43 17v80H300Zm0-80h373q-6-14-9.5-28.5T660-220q0-16 3-31t10-29H300q-26 0-43 17.5T240-220q0 26 17 43t43 17Zm-60-187q14-7 28.5-10t31.5-3h420v-440H300q-26 0-43 17.5T240-740v393Zm109-93h49l25-71h113l25 71h49L504-720h-50L349-440Zm88-112 41-116h3l41 116h-85ZM240-347v-453 453Z"
+        />
+      </svg>
+      <h1 class="text-3xl font-bold mt-5">cambridge dictionary api</h1>
+      <p>API for Cambridge Dictionary, written in Node.js.</p>
+      <div class="pick mt-10 flex mx-auto items-center justify-center mb-5">
+        <p class="text-lg">/api/dictionary/</p>
+        <select
+          name="lang"
+          id="lang"
+          class="bg-purple-100 rounded-lg px-3 py-1 mx-2 text-lg"
+          title="language"
+        >
+          <option value="en">en</option>
+          <option value="uk">uk</option>
+          <option value="en-tw">en-tw</option>
+          <option value="en-cn">en-cn</option>
+        </select>
+        <p class="text-lg">/</p>
+        <input
+          class="bg-purple-100 rounded-lg px-3 py-1 !text-black placeholder:text-black mx-2 text-lg"
+          type="text"
+          name="word"
+          id="word"
+          title="word"
+          placeholder="enter the word"
+        />
+      </div>
+      <button
+        onclick="Go()"
+        class="px-10 mt-5 font-bold text-xl py-2 hover:drop-shadow-xl transition-[0.2s] rounded-lg bg-purple-200 hover:bg-purple-300 drop-shadow-md"
+        type="submit"
+      >
+        GO
+      </button>
     </div>
-    <div class="mt-4 absolute -translate-x-1/2 left-1/2 text-center">
-      <p class="text-xl mb-2 font-bold">Support me</p>
-      <a href="https://www.buymeacoffee.com/eliaschen"
-        ><img
-          src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=eliaschen&button_colour=BD5FFF&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00"
-      /></a>
+    <div class="absolute bottom-20 left-1/2 -translate-x-1/2 -translate-y-20">
+      <div class="flex mt-10 justify-center items-center">
+        <a
+          href="https://github.com/chenelias/cambridge-dictionary-api"
+          class="flex items-center bg-white px-3 py-1 mr-4 rounded-xl transition-[0.2s] hover:drop-shadow-xl drop-shadow-md"
+          target="_blank"
+        >
+          <i class="fa fa-github github-icon text-3xl"></i>&nbsp;
+          <div class="block text-left ml-1">
+            <p>GitHub Repository</p>
+            <p>chenelias/cambridge-dictionary-api</p>
+          </div>
+        </a>
+      </div>
+      <div class="mt-4 absolute -translate-x-1/2 left-1/2 text-center">
+        <p class="text-xl mb-2 font-bold">Support me</p>
+        <a href="https://www.buymeacoffee.com/eliaschen"
+          ><img
+            src="https://img.buymeacoffee.com/button-api/?text=Buy me a coffee&emoji=&slug=eliaschen&button_colour=BD5FFF&font_colour=ffffff&font_family=Lato&outline_colour=000000&coffee_colour=FFDD00"
+        /></a>
+      </div>
     </div>
     <script>
       function Go() {

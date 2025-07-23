@@ -11,26 +11,51 @@ const fetchVerbs = (wiki) => {
       .get(wiki)
       .then((response) => {
         const $$ = cheerio.load(response.data);
-        const verb = $$("tr > td > p ").text();
-
-        const lines = verb
-          .split("\n")
-          .map((line) => line.trim())
-          .filter(Boolean);
-
         const verbs = [];
-        for (let i = 0; i < lines.length; i += 2) {
-          if (verbs.includes({ type: lines[i], text: lines[i + 1] })) {
-            break;
+
+        $$(".inflection-table tr td").each((index, cell) => {
+          const cellElement = $$(cell);
+          const cellText = cellElement.text().trim();
+
+          if (!cellText || cellText === "") return;
+
+          const pElement = cellElement.find("p");
+          if (pElement.length > 0) {
+            const pText = pElement.text().trim();
+            const parts = pText
+              .split("\n")
+              .map((p) => p.trim())
+              .filter((p) => p);
+
+            if (parts.length >= 2) {
+              const type = parts[0];
+              const text = parts[1];
+
+              if (type && text) {
+                verbs.push({ id: verbs.length, type, text });
+              }
+            } else {
+              const htmlContent = pElement.html();
+              if (htmlContent.includes("<br>")) {
+                const htmlParts = htmlContent.split("<br>");
+                if (htmlParts.length >= 2) {
+                  const type =
+                    $$(htmlParts[0]).text().trim() ||
+                    htmlParts[0].replace(/<[^>]*>/g, "").trim();
+                  const textPart = htmlParts[1];
+                  const text =
+                    $$(textPart).text().trim() ||
+                    textPart.replace(/<[^>]*>/g, "").trim();
+
+                  if (type && text) {
+                    verbs.push({ id: verbs.length, type, text });
+                  }
+                }
+              }
+            }
           }
-          const type = lines[i];
-          const text = lines[i + 1];
-          if (type && text) {
-            verbs.push({ id: verbs.length, type, text });
-          } else {
-            verbs.push();
-          }
-        }
+        });
+
         resolve(verbs);
       })
       .catch((error) => {

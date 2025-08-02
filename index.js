@@ -5,8 +5,6 @@ const host = "0.0.0.0";
 
 const server = http.createServer(data);
 
-console.log("helloworld");
-
 console.log(`Server running at http://${host}:${port}`);
 console.log("Try /api/dictionary/en/hello");
 console.log("Or use / to test the API with UI");
